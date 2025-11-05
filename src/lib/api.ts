@@ -4,14 +4,11 @@ import type {
   GameSearchResult, 
   Store, 
   GameDetails 
-} from "@/types"; // Adjust path as needed
+} from "@/types"; 
 
 const API_BASE = "https://www.cheapshark.com/api/1.0";
 
-/**
- * Fetches the default list of deals (e.g., Steam deals under $15).
- * Normalizes the data into our standard `GameCardData` shape.
- */
+//fetch deals function
 export const fetchDeals = async (): Promise<GameCardData[]> => {
   const res = await fetch(`${API_BASE}/deals?storeID=1&upperPrice=15`);
   if (!res.ok) throw new Error("Network response was not ok");
@@ -27,10 +24,7 @@ export const fetchDeals = async (): Promise<GameCardData[]> => {
   }));
 };
 
-/**
- * Searches for games by title from the /games endpoint.
- * Normalizes the data into our standard `GameCardData` shape.
- */
+// Search for games by title.
 export const searchGames = async (title: string): Promise<GameCardData[]> => {
   const res = await fetch(`${API_BASE}/games?title=${title}`);
   if (!res.ok) throw new Error("Network response was not ok");
@@ -46,18 +40,15 @@ export const searchGames = async (title: string): Promise<GameCardData[]> => {
   }));
 };
 
-/**
- * Fetches the master list of all stores.
- */
+
+//store fetch 
 export const fetchStores = async (): Promise<Store[]> => {
   const res = await fetch(`${API_BASE}/stores`);
   if (!res.ok) throw new Error("Network response was not ok");
   return res.json();
 };
 
-/**
- * Fetches the details for a single game by its ID.
- */
+//game details fetch
 export const fetchGameDetails = async (gameID: string): Promise<GameDetails> => {
   const res = await fetch(`${API_BASE}/games?id=${gameID}`);
   if (!res.ok) throw new Error("Network response was not ok");

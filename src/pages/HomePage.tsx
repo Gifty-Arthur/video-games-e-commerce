@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import { TrendingDown, Star } from "lucide-react";
-import { Button } from "@/components/ui/button"; // Import shadcn Button
+import { Button } from "@/components/ui/button";
 
 const HomePage = () => {
   return (

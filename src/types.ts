@@ -1,6 +1,4 @@
-/**
- * Shape of data from the /deals endpoint.
- */
+
 export interface GameDeal {
   internalName: string;
   title: string;
@@ -23,35 +21,28 @@ export interface GameDeal {
   thumb: string;
 }
 
-/**
- * Shape of data from the /games endpoint (when searching).
- */
+
 export interface GameSearchResult {
   gameID: string;
   steamAppID: string;
   cheapest: string;
   cheapestDealID: string;
-  external: string; // This is the game title
+  external: string; 
   internalName: string;
   thumb: string;
 }
 
-/**
- * A normalized, clean shape that our GameList component will use.
- * This combines the relevant fields from both GameDeal and GameSearchResult.
- */
+
 export interface GameCardData {
   gameID: string;
   title: string;
   thumb: string;
   salePrice: string;
   normalPrice: string;
-  uniqueKey: string; // dealID or gameID
+  uniqueKey: string; 
 }
 
-/**
- * Shape of data from the /stores endpoint.
- */
+
 export interface Store {
   storeID: string;
   storeName: string;
@@ -63,9 +54,7 @@ export interface Store {
   };
 }
 
-/**
- * Shape of data from the /games?id=... endpoint (for the detail page).
- */
+
 export interface GameDetails {
   info: {
     title: string;

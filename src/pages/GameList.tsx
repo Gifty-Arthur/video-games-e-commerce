@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import type { GameCardData } from "../types"; // Notice we don't need GameDeal or GameSearchResult here
+import type { GameCardData } from "../types";
 import { ArrowLeft } from "lucide-react";
 
-import { fetchDeals, searchGames } from "../lib/api"; // Adjust this path as needed
+import { fetchDeals, searchGames } from "../lib/api";
 
 export function GameList() {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export function GameList() {
       <Button
         variant="outline"
         size="icon"
-        onClick={() => navigate("/")} //
+        onClick={() => navigate("/")}
         className="mb-4"
       >
         <ArrowLeft className="h-4 w-4" />

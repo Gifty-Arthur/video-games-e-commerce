@@ -1,5 +1,3 @@
-// src/pages/GameDetail.tsx
-
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Store, GameDetails } from "@/types";
@@ -14,14 +12,13 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 
-// Import your API functions
-import { fetchStores, fetchGameDetails } from "../lib/api"; // Adjust path as needed
+// API functions
+import { fetchStores, fetchGameDetails } from "../lib/api";
 
 export function GameDetailPage() {
   const { gameID } = useParams<{ gameID: string }>();
   const navigate = useNavigate();
-
-  // --- TanStack Queries ---
+  //TanStack
   const { data: storesData, isLoading: isLoadingStores } = useQuery<Store[]>({
     queryKey: ["stores"],
     queryFn: fetchStores,
@@ -34,8 +31,6 @@ export function GameDetailPage() {
     queryFn: () => fetchGameDetails(gameID!),
     enabled: !!gameID,
   });
-
-  // --- Render Logic ---
 
   if (isLoadingStores || isLoadingGame) {
     return <div className="text-center p-10">Loading price details...</div>;
@@ -69,11 +64,9 @@ export function GameDetailPage() {
       </Button>
 
       <div className="flex flex-col md:flex-row gap-8 mb-8">
-        {/* === THE FIX IS HERE === */}
         <img
           src={info.thumb}
           alt={info.title}
-          // The class is now 'md:w-1/3' (not 'md:w-1D/3')
           className="w-full md:w-1/3 rounded-md object-cover aspect-square"
         />
 
