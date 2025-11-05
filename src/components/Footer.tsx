@@ -10,7 +10,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="mt-20 bg-gray-100 border-t">
+    <footer className="mt-20 bg-gray-200 border-t">
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-6 md:mb-0">
@@ -24,7 +24,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* 2. API Attribution (Important!) */}
           <div className="text-center mb-6 md:mb-0">
             <p className="text-sm text-gray-600">
               All game data provided by the{" "}
