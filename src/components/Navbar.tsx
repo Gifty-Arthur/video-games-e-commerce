@@ -70,7 +70,7 @@ const Navbar = () => {
       <div
         className="
         hidden
-        md:block md:col-span-1 md:flex md:justify-end
+         md:col-span-1 md:flex md:justify-end
       "
       >
         <Link

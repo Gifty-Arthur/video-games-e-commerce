@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./pages/Navbar";
+import Navbar from "./components/Navbar";
+
 import { GameList } from "./pages/GameList";
 import { GameDetailPage } from "./pages/GameDetail";
 import HomePage from "./pages/HomePage";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
           <Route path="/game/:gameID" element={<GameDetailPage />} />
         </Routes>
       </main>
+      <Footer />
     </>
   );
 };
