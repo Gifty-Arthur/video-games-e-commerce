@@ -10,7 +10,7 @@ export function BackButton() {
       variant="outline"
       size="icon"
       onClick={() => navigate(-1)}
-      className="mb-4"
+      className="mb-4   "
     >
       <ArrowLeft className="h-4 w-4" />
       <span className="sr-only">Go back</span>

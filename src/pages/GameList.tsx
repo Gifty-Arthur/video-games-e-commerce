@@ -35,17 +35,20 @@ export function GameList() {
 
   return (
     <div>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => navigate("/")}
-        className="mb-4"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        <span className="sr-only">Go back</span>
-      </Button>
+      <div className=" px-8">
+        <Button
+          variant="outline"
+          size="icon" // This makes the button small and square
+          onClick={() => navigate("/")}
+          className="mb-4" // I removed px-8, which conflicts with size="icon"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {/* Updated text for screen readers */}
+          <span className="sr-only">Go to Home Page</span>
+        </Button>
+      </div>
 
-      <h2 className="text-3xl font-bold mb-6">
+      <h2 className="text-3xl font-bold mb-9 px-8">
         {searchTerm ? `Results for "${searchTerm}"` : "Top Deals"}
       </h2>
 

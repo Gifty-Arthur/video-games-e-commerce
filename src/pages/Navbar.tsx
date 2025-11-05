@@ -10,8 +10,7 @@ const Navbar = () => {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const path = "/games";
+    const path = "/games"; // This navigates to your GameList page
 
     if (searchTerm.trim()) {
       navigate(`${path}?search=${encodeURIComponent(searchTerm.trim())}`);
@@ -21,53 +20,73 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="grid grid-cols-3 items-center bg-white shadow-xl p-4 mb-10 sticky top-0 z-50">
-      <div className="flex items-center justify-between col-span-2">
-        <div className="col-span-1">
-          <h1 className="font-bold text-3xl">
-            <Link to="/">
-              <span
-                className="
-                bg-linear-to-r
-                from-fuchsia-500
-                to-cyan-500
-                bg-clip-text
-                text-transparent
-              "
-              >
-                CompStore
-              </span>
-            </Link>
-          </h1>
-        </div>
-        {/* 2. Search Bar  */}
-        <div className="col-span-1 flex justify-center">
-          <form onSubmit={handleSearchSubmit} className="w-full max-w-md">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search for a video game..."
-                className="pl-8 w-full"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div className="   ">
-        <div className="col-span-1 flex justify-end">
-          <Link
-            to="/contact"
-            className="text-sm font-medium hover:text-fuchsia-500 transition-colors"
-          >
-            <span className="text-2xl md:hidden font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              +2345689076
+    <nav
+      className="
+      sticky top-0 z-50 bg-white shadow-xl p-4 mb-10
+      flex justify-between items-center
+      md:grid md:grid-cols-3
+    "
+    >
+      {/* --- 1. Logo --- */}
+      {/* This just works as a flex item or a grid item */}
+      <div className="md:col-span-1">
+        <h1 className="font-bold text-3xl">
+          <Link to="/">
+            <span
+              className="
+              bg-linear-to-r
+              from-fuchsia-500
+              to-cyan-500
+              bg-clip-text
+              text-transparent
+            "
+            >
+              CompStore
             </span>
           </Link>
-        </div>
+        </h1>
+      </div>
+
+      <div
+        className="
+        w-1/2 
+        md:w-full md:col-span-1 md:flex md:justify-center
+      "
+      >
+        <form onSubmit={handleSearchSubmit} className="w-full max-w-md">
+          <div className="relative">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search..." // Shortened placeholder for mobile
+              className="pl-8 w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </form>
+      </div>
+
+      <div
+        className="
+        hidden
+        md:block md:col-span-1 md:flex md:justify-end
+      "
+      >
+        <Link
+          to="/contact"
+          className="text-sm font-medium hover:text-fuchsia-500 transition-colors"
+        >
+          <span
+            className="
+            text-2xl font-bold 
+            bg-linear-to-r from-purple-400 to-pink-400 
+            bg-clip-text text-transparent
+          "
+          >
+            +2345689076
+          </span>
+        </Link>
       </div>
     </nav>
   );

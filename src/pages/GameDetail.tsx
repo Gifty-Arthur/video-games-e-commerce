@@ -82,7 +82,69 @@ export function GameDetailPage() {
       </div>
 
       <h2 className="text-2xl font-semibold mb-4">Price Comparison</h2>
-      <div className="border rounded-md">
+      {/* mobile view  */}
+      <div className="grid grid-cols-1 gap-4 md:hidden">
+        {deals.map((deal) => {
+          const storeInfo = storeMap.get(deal.storeID);
+          if (!storeInfo) return null;
+
+          const isCheapest = deal.price === cheapestPriceEver.price;
+
+          return (
+            <div
+              key={deal.dealID}
+              className={`
+          border rounded-md p-4 
+          ${isCheapest ? "border-2 border-fuchsia-500" : ""}
+        `}
+            >
+              {/* Row 1: Store Info */}
+              <div className="flex items-center gap-2 mb-4">
+                <img
+                  src={`https://www.cheapshark.com${storeInfo.images.icon}`}
+                  alt={storeInfo.storeName}
+                  className="w-8 h-8 rounded-full"
+                />
+                <span className="font-medium">{storeInfo.storeName}</span>
+              </div>
+
+              {/* Row 2: Price Info */}
+              <div className="flex justify-between items-center mb-4">
+                <div>
+                  <div className="text-sm text-gray-500">Current Price</div>
+                  <div className="font-bold text-lg text-green-500">
+                    ${deal.price}
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm text-gray-500">Retail</div>
+                  <div className="line-through">${deal.retailPrice}</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-sm text-gray-500">Savings</div>
+                  <div className="text-green-600 font-medium">
+                    {Math.floor(parseFloat(deal.savings))}%
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 3: Action Button */}
+              <Button asChild className="w-full bg-linear-to-r  text-white">
+                <a
+                  href={`https://www.cheapshark.com/redirect?dealID=${deal.dealID}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Buy Now
+                </a>
+              </Button>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* dekstop */}
+      <div className="hidden md:block border rounded-md">
         <Table>
           <TableHeader>
             <TableRow>
